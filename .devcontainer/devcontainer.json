@@ -1,5 +1,5 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
-<<<<<<< HEAD
+
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
   "name": "KIZ Core Engine",
@@ -31,40 +31,5 @@
 
   // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "devcontainer"
-=======
-// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
-{
-  "name": "Kuala Gateway Engine",
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/go:1.20-bullseye",
-  // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts"
-    }
-  },
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
-  // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": [
-    "npx dotenv-vault@latest pull",
-    "&&",
-    "go mod tidy"
-  ],
-  "postStartCommand": [
-    "git config --global safe.directory $(pwd)",
-    "&&",
-    "git config --global core.autocrlf false",
-    "&&",
-    "go run main.go"
-  ],
-  // Configure tool-specific properties.
-  "customizations": {
-    "vscode": {
-      "extensions": []
-    }
-  }
-  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-  // "remoteUser": ""
->>>>>>> b152ecb471345d614c612f206c6d83d5c702336b
+
 }
