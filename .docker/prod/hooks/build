@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "docker build --build-arg DOTENV_KEY=$DOTENV_KEY --build-arg DEBUG=false -f Dockerfile -t $IMAGE_NAME ../../"
+
+docker build --build-arg DOTENV_KEY=$DOTENV_KEY --build-arg DEBUG=false -f Dockerfile -t $IMAGE_NAME ../../
