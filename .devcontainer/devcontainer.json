@@ -3,12 +3,13 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
   "name": "Dollar USSD",
-  "build": {
-    // Sets the run context to one level up instead of the .devcontainer folder.
-    // "context": "..",
-    // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-    "dockerfile": "../.docker/Dockerfile"
-  },
+  image: "docker/dev-environments-go:stable-1",
+//  "build": {
+//    // Sets the run context to one level up instead of the .devcontainer folder.
+//    // "context": "..",
+//    // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+//    "dockerfile": "../.docker/Dockerfile"
+//  },
 
   // "image": "rayne22/dollar-ussd:dev",
   "workspaceFolder": "/workspace",
