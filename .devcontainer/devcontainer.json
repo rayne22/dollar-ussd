@@ -5,9 +5,9 @@
   "name": "Dollar USSD",
   "build": {
     // Sets the run context to one level up instead of the .devcontainer folder.
-    "context": "..",
+    // "context": "..",
     // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-    "dockerfile": "../Dockerfile"
+    "dockerfile": "../.docker/Dockerfile"
   },
 
   // "image": "rayne22/dollar-ussd:dev",
