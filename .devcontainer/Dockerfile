@@ -14,10 +14,10 @@ ENV GOARCH amd64
 RUN apk --no-cache add bash git openssh
 
 # modules: utlize build cache
-COPY go.mod ./
-COPY go.sum ./
-
-RUN go mod download
+#COPY go.mod ./
+#COPY go.sum ./
+#
+#RUN go mod download
 COPY . .
 
 CMD [ "sleep", "infinity" ]
