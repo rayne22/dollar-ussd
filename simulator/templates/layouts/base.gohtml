@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>{{.title}}</title>
+        <title>{{.Title}}</title>
         <meta content="" name="description">
 
         <meta content="" name="keywords">
@@ -36,14 +36,14 @@
                 <form action="/input" method="post" >
                     <div class="screen">
                         <div class="display">
-                            {{.title}}
+                            {{.Title}}
                         </div>
                         <div class="form-field">
                             <input type="text" name="selection" value=""/>
 
                         </div>
-                        <input type="hidden" name="screen" value="{{.screen}}"/>
-                        <input type="hidden" name="input_type" value="{{.type}}"/>
+                        <input type="hidden" name="screen" value="{{.Screen}}"/>
+                        <input type="hidden" name="input_type" value="{{.Type}}"/>
                         <div class="form-button">
                             <button type="submit">Enter</button>
                         </div>

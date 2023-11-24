@@ -10,7 +10,7 @@ type Screen struct {
 	Options      []Option        `json:"options"`
 	Type         enums.InputType `json:"type"`
 	Position     string          `json:"position"`
-	NextPosition string          `json:"nextPosition"`
+	NextPosition string          `json:"next_position"`
 }
 
 type Option struct {

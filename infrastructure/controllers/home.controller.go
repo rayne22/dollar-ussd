@@ -73,11 +73,12 @@ var IndexController = func(c *gin.Context) {
 	//updateSession(session)
 
 	// Render the HTML template with the updated session state
-	c.HTML(http.StatusOK, "index", gin.H{
-		"title":  testData,
-		"screen": test[0].Position,
-		"type":   test[0].InputType,
-	})
+	c.HTML(http.StatusOK, "index", _interface.InputDetail{
+		Screen: test[0].ScreenID,
+		Type:   test[0].InputType,
+		Title:  testData,
+	},
+	)
 
 }
 

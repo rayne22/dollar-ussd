@@ -7,9 +7,10 @@ import (
 )
 
 type Screen struct {
-	Detail   string
-	Type     string
-	Position string
+	Detail          string
+	Type            string
+	Position        string
+	CurrentPosition string
 }
 
 func (scr Screen) CreateScreenDetail() ([]Screen, error) {
@@ -23,22 +24,33 @@ func (scr Screen) CreateScreenDetail() ([]Screen, error) {
 		return nil, err
 	}
 
-	screens2 := []Screen{}
+	finalScrn := []Screen{}
+
 	for _, screen := range scrns {
+		screens2 := []Screen{}
 		det := ""
 		for _, option := range screen.Options {
-			det = fmt.Sprintf("%s \n\n %s", det, option.OptionDetail)
+			//fmt.Println("VALUEEEEEEEEEEEEEEE", )
+			if option.OptionNumber != nil {
+				num := *option.OptionNumber
+				det = fmt.Sprintf("%s \n\n %d) %s", det, num, option.OptionDetail)
+			} else {
+				det = fmt.Sprintf("%s \n\n %s", det, option.OptionDetail)
+			}
+
+		}
+		scr2 := Screen{
+			Detail:          det,
+			Type:            string(screen.Type),
+			Position:        screen.NextPosition,
+			CurrentPosition: screen.Position,
 		}
 
-		scr := Screen{
-			Detail:   det,
-			Type:     string(screen.Type),
-			Position: screen.NextPosition,
-		}
+		screens2 = append(screens2, scr2)
 
-		screens2 = append(screens2, scr)
+		finalScrn = append(finalScrn, screens2...)
 
 	}
 
-	return screens2, nil
+	return finalScrn, nil
 }

@@ -2,7 +2,10 @@ package _interface
 
 import (
 	"dollar-ussd/domain/services"
+	"dollar-ussd/utils"
+	"fmt"
 	"log"
+	"strings"
 )
 
 func (s *Screen) FetchScreen() (Screen, error) {
@@ -27,10 +30,12 @@ func (s *Screen) FetchScreens() ([]Screen, error) {
 			ScreenID:  screen.Position,
 			InputType: screen.Type,
 			Details:   screen.Detail,
+			Position:  screen.CurrentPosition,
 		}
 
 		screens = append(screens, scrn)
 	}
+
 	return screens, nil
 }
 
@@ -45,10 +50,33 @@ func (s *Screen) SelectionProcessing(selection InputDetail) (Screen, error) {
 
 	for _, scrn := range resp {
 
-		if scrn.ScreenID == selection.Selection {
-			nxtScreen = scrn
-			break
+		getPosition := strings.Split(selection.Screen, ",")
+
+		for _, v := range getPosition {
+			finalPosition := strings.Split(v, "-")
+
+			if len(finalPosition) > 1 {
+				foundSelection := utils.ValueIsEqual(finalPosition, selection.Selection)
+				if foundSelection == selection.Selection {
+					if scrn.Position == finalPosition[1] {
+
+						nxtScreen = scrn
+
+						fmt.Println("WHAT IS JO>>>>>>>>>>>>>>?", scrn.Position, finalPosition[1])
+						break
+					}
+				}
+			} else {
+				if scrn.Position == finalPosition[0] {
+
+					nxtScreen = scrn
+					//fmt.Println("WHAT IS JO>>>>>>>>>>>>>>?", scrn.Position, finalPosition[0])
+					break
+				}
+			}
+
 		}
+
 	}
 
 	return nxtScreen, nil

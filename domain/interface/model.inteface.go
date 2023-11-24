@@ -14,6 +14,7 @@ type Option struct {
 }
 
 type InputDetail struct {
+	Title     string `json:"title"`
 	Selection string `json:"selection"`
 	Screen    string `json:"screen"`
 	Type      string `json:"type"`
