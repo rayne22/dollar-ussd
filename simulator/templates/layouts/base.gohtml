@@ -1,0 +1,64 @@
+{{ define "base" }}
+    <!DOCTYPE html>
+    <html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>{{.title}}</title>
+        <meta content="" name="description">
+
+        <meta content="" name="keywords">
+
+        <!-- Favicons -->
+        {{/*        <link href="assets/img/favicon.png" rel="icon">*/}}
+        {{/*        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">*/}}
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+              rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+    <main id="main">
+        <div class="container">
+            <div id="mobile">
+
+                <form action="/input" method="post" >
+                    <div class="screen">
+                        <div class="display">
+                            {{.title}}
+                        </div>
+                        <div class="form-field">
+                            <input type="text" name="selection" value=""/>
+
+                        </div>
+                        <input type="hidden" name="screen" value="{{.screen}}"/>
+                        <input type="hidden" name="input_type" value="{{.type}}"/>
+                        <div class="form-button">
+                            <button type="submit">Enter</button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </main><!-- End #main -->
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/custom.js"></script>
+
+    </body>
+
+    </html>
+{{ end }}

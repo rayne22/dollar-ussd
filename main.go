@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"dollar-ussd/configs"
+	"dollar-ussd/domain/migrations"
+	"dollar-ussd/serve"
+)
 
 func main() {
-	fmt.Print("New Thing")
+	migrations.Migrations(configs.GetDB())
+	serve.Serve()
 }

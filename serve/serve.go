@@ -3,20 +3,22 @@ package serve
 import (
 	"dollar-ussd/routes"
 	"fmt"
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
 	"log"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/dotenv-org/godotenvvault"
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func Serve() {
 	//Loads .env file
-	//err := godotenvvault.Load()
-	//if err != nil {
-	//	log.Fatal("Error loading .env file")
-	//}
+	err := godotenvvault.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
 	f, err := os.OpenFile(""+
 		"activity.log",
