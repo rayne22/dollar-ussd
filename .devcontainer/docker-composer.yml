@@ -22,9 +22,9 @@ services:
 
   web:
     build:
-      context: ..
+      context: .
       dockerfile: Dockerfile  # Specify the path to your Dockerfile for the Golang app
-#    image: momo
+    image: momo:latest  # Use the desired image name and tag
     deploy:
       replicas: 1
     ports:
@@ -32,7 +32,7 @@ services:
     networks:
       - external_network
     depends_on:
-      - db  # Ensure that the web service starts after the database service
+      - db  # Ensure that
 
 volumes:
   postgres-momo:
