@@ -13,7 +13,7 @@ services:
     networks:
       - external_network
     ports:
-      - "5454:5432"  # Map container port 5432 to host port 5433 for ingress
+      - "5455:5432"  # Map container port 5432 to host port 5433 for ingress
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
