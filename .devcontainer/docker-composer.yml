@@ -22,9 +22,9 @@ services:
 
   web:
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile  # Specify the path to your Dockerfile for the Golang app
-    image: momo
+#    image: momo
     deploy:
       replicas: 1
     ports:
