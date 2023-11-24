@@ -14,7 +14,7 @@ type Serve struct {
 func (e *Serve) Routes() *Serve {
 
 	// Loads all the templates
-	e.Engine.LoadHTMLGlob("simulator/templates/**/*")
+	e.Engine.LoadHTMLGlob("simulator/templates/layouts/*")
 
 	// Home Route
 	home := e.Engine.Group("")
