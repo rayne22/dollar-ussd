@@ -22,11 +22,11 @@ services:
 
   web:
     image: rayne22/dollar-ussd:latest
-    build:
-      dockerfile: Dockerfile  # Specify the path to your Dockerfile for the Golang app
-      args:
-        DOTENV_KEY: ${DOTENV_KEY}
-        DEBUG: ${DEBUG}
+#    build:
+#      dockerfile: Dockerfile  # Specify the path to your Dockerfile for the Golang app
+#      args:
+#        DOTENV_KEY: ${DOTENV_KEY}
+#        DEBUG: ${DEBUG}
     deploy:
       replicas: 1
     environment:

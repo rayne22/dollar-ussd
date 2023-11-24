@@ -1,9 +1,7 @@
 FROM golang:1.20.0-alpine AS base
 WORKDIR /app
 
-ARG DOTENV_KEY="dotenv://:key_fdf7141f6d0c6f8e21cabc9719d095076c28cd97ecad12231f2d50289eaab936@dotenv.org/vault/.env.vault?environment=staging"
 ARG DEBUG=false
-ENV DOTENV_KEY=${DOTENV_KEY}
 ENV DEBUG=${DEBUG}
 
 # builder
@@ -24,6 +22,10 @@ RUN go build -o main .
 
 # runner
 FROM base AS runner
+
+ARG DOTENV_KEY="dotenv://:key_fdf7141f6d0c6f8e21cabc9719d095076c28cd97ecad12231f2d50289eaab936@dotenv.org/vault/.env.vault?environment=staging"
+ENV DOTENV_KEY=${DOTENV_KEY}
+
 RUN apk add --no-cache libc6-compat tini
 # Tini is now available at /sbin/tini
 
