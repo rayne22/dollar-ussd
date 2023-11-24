@@ -29,6 +29,8 @@ services:
         DEBUG: ${DEBUG}
     deploy:
       replicas: 1
+    environment:
+      DOTENV_KEY: ${DOTENV_KEY}
     ports:
       - "8980:8980"  # Map container port 8980 to host port 8980
     networks:
