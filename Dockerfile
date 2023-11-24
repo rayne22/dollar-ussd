@@ -30,6 +30,7 @@ RUN apk add --no-cache libc6-compat tini
 # Tini is now available at /sbin/tini
 
 COPY --from=builder /app/main /app/main
+COPY --from=builder /app/simulator /app/simulator
 COPY --from=builder /app/.env.vault /app/.env.vault
 EXPOSE 8980
 
