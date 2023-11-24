@@ -24,7 +24,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile  # Specify the path to your Dockerfile for the Golang app
-    image: momo:latest  # Use the desired image name and tag
     deploy:
       replicas: 1
     ports:
