@@ -20,4 +20,7 @@ RUN apk --no-cache add bash git openssh
 #RUN go mod download
 COPY . .
 
-CMD [ "sleep", "infinity" ]
+EXPOSE 8980
+
+ENTRYPOINT [ "/sbin/tini", "--" ]
+CMD [ "/app/main" ]
