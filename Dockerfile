@@ -14,13 +14,23 @@ ENV GOARCH amd64
 RUN apk --no-cache add bash git openssh
 
 # modules: utlize build cache
-#COPY go.mod ./
-#COPY go.sum ./
-#
-#RUN go mod download
+COPY go.mod ./
+COPY go.sum ./
+
+RUN go mod download
 COPY . .
 
+RUN go build -o main .
+
+# runner
+FROM base AS runner
+RUN apk add --no-cache libc6-compat tini
+# Tini is now available at /sbin/tini
+
+COPY --from=builder /app/main /app/main
+COPY --from=builder /app/.env.vault /app/.env.vault
 EXPOSE 8980
 
 ENTRYPOINT [ "/sbin/tini", "--" ]
 CMD [ "/app/main" ]
+
