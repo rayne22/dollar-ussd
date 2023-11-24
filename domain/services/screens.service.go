@@ -30,7 +30,7 @@ func (scr Screen) CreateScreenDetail() ([]Screen, error) {
 		screens2 := []Screen{}
 		det := ""
 		for _, option := range screen.Options {
-			//fmt.Println("VALUEEEEEEEEEEEEEEE", )
+
 			if option.OptionNumber != nil {
 				num := *option.OptionNumber
 				det = fmt.Sprintf("%s \n\n %d) %s", det, num, option.OptionDetail)

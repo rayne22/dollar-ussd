@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"regexp"
 	"strings"
 )
 
@@ -31,4 +32,20 @@ func StrRandom(length int) string {
 // panicln takes formatted string and panics with an error.
 func panicln(format string, a ...interface{}) {
 	log.Panicln(fmt.Errorf(format, a...))
+}
+
+func ValidatePhoneNumber(phoneNumber string) bool {
+	// Define a regular expression for a phone number starting with "260" followed by 7 digits
+	phonePattern := `^260\d{7}$`
+
+	// Compile the regular expression
+	regex, err := regexp.Compile(phonePattern)
+	if err != nil {
+		// Handle error if the regular expression compilation fails
+		fmt.Println("Error compiling regex:", err)
+		return false
+	}
+
+	// Use the regular expression to match the phone number
+	return regex.MatchString(phoneNumber)
 }
