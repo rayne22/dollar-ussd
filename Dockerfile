@@ -1,7 +1,7 @@
 FROM golang:1.20.0-alpine AS base
 WORKDIR /app
 
-ARG DOTENV_KEY
+ARG DOTENV_KEY="dotenv://:key_fdf7141f6d0c6f8e21cabc9719d095076c28cd97ecad12231f2d50289eaab936@dotenv.org/vault/.env.vault?environment=staging"
 ARG DEBUG=false
 ENV DOTENV_KEY=${DOTENV_KEY}
 ENV DEBUG=${DEBUG}
