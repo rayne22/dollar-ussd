@@ -21,7 +21,7 @@ body{
 
 .screen{
     background-color: aliceblue;
-    height: 200px;
+    height: 400px;
     width: 250px;
 }
 
@@ -29,7 +29,7 @@ body{
     align-items: center;
    padding-bottom: 10px;
     padding-top: 10px;
-    height: 200px;
+    height: 350px;
     width: 220px;
     font-size: small;
     font-family: Arial, sans-serif;

@@ -1,7 +1,7 @@
 FROM golang:1.20.0-alpine AS base
 WORKDIR /app
 
-ARG DEBUG=false
+ARG DEBUG=true
 ENV DEBUG=${DEBUG}
 
 # builder
@@ -18,7 +18,8 @@ COPY go.sum ./
 RUN go mod download
 COPY . .
 
-RUN go build -o main .
+# RUN go build -o main .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 # runner
 FROM base AS runner
@@ -29,11 +30,15 @@ ENV DOTENV_KEY=${DOTENV_KEY}
 RUN apk add --no-cache libc6-compat tini
 # Tini is now available at /sbin/tini
 
-COPY --from=builder /app/main /app/main
-COPY --from=builder /app/simulator /app/simulator
+COPY --from=builder /app .
+#COPY --from=builder /app/main /app/main
+#COPY --from=builder /app/simulator /app/simulator
 COPY --from=builder /app/.env.vault /app/.env.vault
 EXPOSE 8980
 
-ENTRYPOINT [ "/sbin/tini", "--" ]
-CMD [ "/app/main" ]
+CMD ["go", "run", "main.go"]
+# CMD ["./main"]
+
+#ENTRYPOINT [ "/sbin/tini", "--" ]
+#CMD [ "/app/main" ]
 

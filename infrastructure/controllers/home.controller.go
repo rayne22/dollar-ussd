@@ -3,8 +3,8 @@ package controllers
 import (
 	_interface "dollar-ussd/domain/interface"
 	"dollar-ussd/utils"
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"log"
 	"net/http"
 )
 
@@ -40,14 +40,15 @@ var IndexController = func(c *gin.Context) {
 	//sessionID := c.Query("session_id")
 	// userInput := c.Query("user_input")
 
-	scr := _interface.Screen{}
-	test, err := scr.FetchScreens()
-	if err != nil {
-		log.Println(err)
-		return
-	}
+	//scr := _interface.Screen{}
+	//test, err := scr.FetchScreens()
+	//if err != nil {
+	//	log.Println(err)
+	//	return
+	//}
 
-	testData := test[0].Details
+	//testData := test[0].Details
+	menu := fmt.Sprintf("Welcome to MoMo FX. \n\nEnter the phone number (e.g 260****) to proceed")
 	//c.HTML(http.StatusOK, "index", gin.H{
 	//	"title": testData,
 	// })
@@ -74,9 +75,9 @@ var IndexController = func(c *gin.Context) {
 
 	// Render the HTML template with the updated session state
 	c.HTML(http.StatusOK, "index", _interface.InputDetail{
-		Screen: test[0].ScreenID,
-		Type:   test[0].InputType,
-		Title:  testData,
+		Screen: "main",
+		Type:   "text",
+		Title:  menu,
 	},
 	)
 
